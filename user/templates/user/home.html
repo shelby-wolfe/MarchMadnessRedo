@@ -1,0 +1,64 @@
+{% extends "user/base.html" %}
+
+{% block content %}
+
+<style>
+    #countdown {
+        font-size: 48px;
+        font-weight: bold;
+        color: #f7770f; /* Red text */
+        margin-top: 10px;
+    }
+</style>
+
+<div class="content-section text-center">
+    <h1>March Madness Countdown!</h1>
+    <h3 id="countdown"></h3>
+</div>
+
+<script>
+    // Set the event date (Year, Month (0-based), Day, Hour, Minute, Second)
+    var eventDate = new Date("March 19, 2026 00:00:00").getTime(); // Change to your event date
+
+    // Update the countdown every second
+    var countdownFunction = setInterval(function() {
+        var now = new Date().getTime();  // Get the current time
+        var timeLeft = eventDate - now;  // Calculate the time remaining
+
+        // Time calculations for days, hours, minutes, and seconds
+        var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        // Display the countdown
+        document.getElementById("countdown").innerHTML =
+            days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+        // Stop the countdown when the event is reached
+        if (timeLeft < 0) {
+            clearInterval(countdownFunction);
+            document.getElementById("countdown").innerHTML = "The event has started!";
+        }
+    }, 1000); // Update every second
+</script>
+
+<div class="row justify-content-center mb-4">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}
+
+
+
