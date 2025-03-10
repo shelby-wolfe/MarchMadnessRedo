@@ -1,0 +1,15 @@
+{% extends 'user/base.html' %}
+
+{% block content %}
+<h1>March Madness Bracket</h1>
+
+{% for region, matchups in matchups_by_region.items %}
+    <h2>{{ region }} Region</h2>
+    <ul>
+        {% for matchup in matchups %}
+            <li>{{ matchup.team1.name }} ({{ matchup.team1.seed }}) vs {{ matchup.team2.name }} ({{ matchup.team2.seed }})</li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+
+{% endblock %}
