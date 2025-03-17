@@ -14,7 +14,8 @@ class Matchup(models.Model):
     team1 = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='team1_matchups')
     team2 = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='team2_matchups')
     winner= models.ForeignKey(Team, on_delete=models.SET_NULL, null=True, blank=True, related_name='won_matchups')
-
+    region = models.CharField(max_length=100)
+    
     def __str__(self):
         return f"Round {self.round_number}: {self.team1} vs {self.team2}"
     

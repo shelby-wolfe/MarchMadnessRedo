@@ -1,15 +1,142 @@
 {% extends 'user/base.html' %}
 
 {% block content %}
-<h1>March Madness Bracket</h1>
+<title>March Madness Stock Matchup</title>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-wrap">
+      <p class="intro" id="intro">flexbox</p>
+      <h1 id="headline">Tournament</h1>
+      <p class="year"><i class="fa fa-star"></i> 2015 <i class="fa fa-star"></i></p>
+      <p>Ballin' Outta Control</p>
+    </div>
+  </header>
 
-{% for region, matchups in matchups_by_region.items %}
-    <h2>{{ region }} Region</h2>
-    <ul>
-        {% for matchup in matchups %}
-            <li>{{ matchup.team1.name }} ({{ matchup.team1.seed }}) vs {{ matchup.team2.name }} ({{ matchup.team2.seed }})</li>
-        {% endfor %}
-    </ul>
-{% endfor %}
-
-{% endblock %}
+  <section id="bracket">
+    <div class="container">
+  
+      <!-- Left Side Bracket -->
+      <div class="split split-left">
+        <!-- Region 1 -->
+        <div class="region region-one">
+          <div class="round round-one">
+            <div class="round-details">Round 1 - East<br/><span class="date">March 16</span></div>
+            {% for matchup in round_1_east %}
+            <ul class="matchup">
+              <li class="team team-top">{{ matchup.team1.name }} <span class="score">{{ matchup.team1.score }}</span></li>
+              <li class="team team-bottom">{{ matchup.team2.name }} <span class="score">{{ matchup.team2.score }}</span></li>
+            </ul>
+            {% endfor %}
+          </div>
+        </div>
+  
+        <!-- Region 3 -->
+        <div class="region region-three">
+          <div class="round round-one">
+            <div class="round-details">Round 1 - West<br/><span class="date">March 16</span></div>
+            {% for matchup in round_1_west %}
+            <ul class="matchup">
+              <li class="team team-top">{{ matchup.team1.name }} <span class="score">{{ matchup.team1.score }}</span></li>
+              <li class="team team-bottom">{{ matchup.team2.name }} <span class="score">{{ matchup.team2.score }}</span></li>
+            </ul>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+  
+      <!-- Right Side Bracket -->
+      <div class="split split-right">
+        <!-- Region 2 -->
+        <div class="region region-two">
+          <div class="round round-one">
+            <div class="round-details">Round 1 - South<br/><span class="date">March 16</span></div>
+            {% for matchup in round_1_south %}
+            <ul class="matchup">
+              <li class="team team-top">{{ matchup.team1.name }} <span class="score">{{ matchup.team1.score }}</span></li>
+              <li class="team team-bottom">{{ matchup.team2.name }} <span class="score">{{ matchup.team2.score }}</span></li>
+            </ul>
+            {% endfor %}
+          </div>
+        </div>
+  
+        <!-- Region 4 -->
+        <div class="region region-four">
+          <div class="round round-one">
+            <div class="round-details">Round 1 - Midwest<br/><span class="date">March 16</span></div>
+            {% for matchup in round_1_midwest %}
+            <ul class="matchup">
+              <li class="team team-top">{{ matchup.team1.name }} <span class="score">{{ matchup.team1.score }}</span></li>
+              <li class="team team-bottom">{{ matchup.team2.name }} <span class="score">{{ matchup.team2.score }}</span></li>
+            </ul>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  <section id="round-2">
+    <div class="container">
+      <!-- Round 2 - East -->
+      <div class="split split-left">
+        <div class="region region-one">
+          <div class="round round-two">
+            <div class="round-details">Round 2 - East<br/><span class="date">March 18</span></div>
+            {% for matchup in round_2_east %}
+              <ul class="matchup">
+                <li class="team team-top">{{ matchup.team1.name }} <span class="score">{{ matchup.team1.score }}</span></li>
+                <li class="team team-bottom">{{ matchup.team2.name }} <span class="score">{{ matchup.team2.score }}</span></li>
+              </ul>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+  
+      <!-- Round 2 - West -->
+      <div class="split split-left">
+        <div class="region region-three">
+          <div class="round round-two">
+            <div class="round-details">Round 2 - West<br/><span class="date">March 18</span></div>
+            {% for matchup in round_2_west %}
+              <ul class="matchup">
+                <li class="team team-top">{{ matchup.team1.name }} <span class="score">{{ matchup.team1.score }}</span></li>
+                <li class="team team-bottom">{{ matchup.team2.name }} <span class="score">{{ matchup.team2.score }}</span></li>
+              </ul>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+  
+      <!-- Round 2 - South -->
+      <div class="split split-right">
+        <div class="region region-two">
+          <div class="round round-two">
+            <div class="round-details">Round 2 - South<br/><span class="date">March 18</span></div>
+            {% for matchup in round_2_south %}
+              <ul class="matchup">
+                <li class="team team-top">{{ matchup.team1.name }} <span class="score">{{ matchup.team1.score }}</span></li>
+                <li class="team team-bottom">{{ matchup.team2.name }} <span class="score">{{ matchup.team2.score }}</span></li>
+              </ul>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+  
+      <!-- Round 2 - Midwest -->
+      <div class="split split-right">
+        <div class="region region-four">
+          <div class="round round-two">
+            <div class="round-details">Round 2 - Midwest<br/><span class="date">March 18</span></div>
+            {% for matchup in round_2_midwest %}
+              <ul class="matchup">
+                <li class="team team-top">{{ matchup.team1.name }} <span class="score">{{ matchup.team1.score }}</span></li>
+                <li class="team team-bottom">{{ matchup.team2.name }} <span class="score">{{ matchup.team2.score }}</span></li>
+              </ul>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock %}  
