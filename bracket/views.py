@@ -13,16 +13,16 @@ def generate_next_round():
             if matchup.winner:
                 winners.append(matchup.winner.id)  # Store team IDs only
 
-        # Ensure we have exactly 16 winners (8 matchups)
-        if len(winners) != 16:
-            print(f"Error: Expected 16 winners for {region}, but found {len(winners)}")
+        # Ensure we have exactly 8 winners (4 matchups for Round 2)
+        if len(winners) != 8:
+            print(f"Error: Expected 8 winners for {region}, but found {len(winners)}")
             continue
 
         # Remove old Round 2 matchups before creating new ones
         Matchup.objects.filter(round_number=2, region=region).delete()
 
         # Create new matchups by pairing adjacent winners
-        for i in range(0, 16, 2):
+        for i in range(0, 8, 2):
             team1_id = winners[i]
             team2_id = winners[i + 1]
 
@@ -32,7 +32,6 @@ def generate_next_round():
                 team2_id=team2_id,
                 region=region,
             )
-
 
 def bracket_view(request):
     # Fetch the matchups for round 1

@@ -123,8 +123,15 @@ body {font-family: 'Istok Web', sans-serif;background: url("http://picjumbo.com/
   }
   
   .region {
-    width: 100%;
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .round {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .round-details {
@@ -134,10 +141,12 @@ body {font-family: 'Istok Web', sans-serif;background: url("http://picjumbo.com/
   }
   
   .matchup {
-    list-style: none;
-    padding: 0;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px 0;
+    width: 150px;
     text-align: center;
-    margin-bottom: 10px;
+    background-color: #f4f4f4;
   }
   
   .team {
@@ -149,8 +158,8 @@ body {font-family: 'Istok Web', sans-serif;background: url("http://picjumbo.com/
 
   .container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    align-items: 50px;
   }
   
   .split {
