@@ -61,3 +61,9 @@ def bracket_view(request):
     }
 
     return render(request, "bracket/bracket.html", context)
+
+# Handling Bracket submissions 
+def submit_bracket(request):
+    bracket_window = BracketWindow.objects.first()
+    if not bracket_window.is_open():
+        return HTTPResponseForbidden("Bracket selection is closed!")    

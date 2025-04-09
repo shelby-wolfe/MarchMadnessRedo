@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User 
+from django.utils import timezone
+from django.db import models 
 
 class Team(models.Model):
     name = models.CharField(max_length=100)
@@ -33,3 +35,18 @@ class UserPick(models.Model):
 
     def __str__(self):
         return f"{self.bracket.user.username} - {self.matchup} Pick: {self.selected_winner}"
+    
+# Define when bracket selection opens or closes
+class BracketWindow(models.Model):
+    open_time = models.DateTimeField()
+    close_time = models.DateTimeField()
+
+    def is_open(self):
+        now = timezone.now()
+        return self.open_time <= now <= self.close_time
+#Store user selections
+class BracketPick(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    game = models.ForeignKey(Matchup, on_delete=models.CASCADE)
+    selected_team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    round_number = models.IntegerField()
